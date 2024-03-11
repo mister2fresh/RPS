@@ -13,44 +13,83 @@ function getComputerChoice(arr) {
 
 
 let computerSelection = getComputerChoice(words);
-let playerSelection = 'rOcK'.toLowerCase();
+let playerSelection = window.prompt('What is your play?').toLowerCase();
+let playerScore = 0;
+let compScore = 0;
+
+
 
 function playRound(playerSelection, computerSelection) {
     
      if (playerSelection === computerSelection) {
-        alert('Tie!');
+        console.log('Tie!');
      }
 
      else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        alert('You lose! Paper covers rock!');
+        compScore++
+        console.log('You lose! Paper covers rock!');
      }
     
 
      else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        alert('You win! Rock crushes scissors!');
+        playerScore++
+        console.log('You win! Rock crushes scissors!');
      }
         
      else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        alert('You win! Paper covers rock!');
+        playerScore++
+        console.log('You win! Paper covers rock!');
      }
       
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        alert('You lose! Scissors cut paper!');
+        compScore++
+        console.log('You lose! Scissors cut paper!');
     }
     
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        alert('You lose! Rock crushes scissors!');
+        compScore++
+        console.log('You lose! Rock crushes scissors!');
     }
 
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        alert('You win! Scissors cut paper!');
+        playerScore++;
+        console.log('You win! Scissors cut paper!');
     }
 
     else {
-        alert('I wanted to play a game');
+        console.log('I wanted to play a game. Please enter "rock", "paper", or "scissors".');
     }
     }
 
 
 console.log(playRound(playerSelection, computerSelection));
+
+
+/ playRound until computer or player reaches 5 points /
+
+        function playGame() {
+            for (let i = 0; i < 5; i++) {
+                let computerSelection = getComputerChoice(words);
+                let playerSelection = window.prompt('What is your play?').toLowerCase();
+                playRound(playerSelection, computerSelection);
+            }
         
+            console.log('Game Over!');
+            console.log('Player Score:', playerScore);
+            console.log('Computer Score:', compScore);
+        
+            if (playerScore > compScore) {
+                console.log('You win the game!');
+            } else if (compScore > playerScore) {
+                console.log('You lose the game!');
+            } else 
+                console.log('Draw')
+        }
+        
+        playGame();
+        
+
+
+  
+ 
+
